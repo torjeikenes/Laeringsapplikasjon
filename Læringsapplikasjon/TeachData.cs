@@ -33,6 +33,10 @@ namespace Læringsapplikasjon
         /// <param name="Sound">Path for sound file</param>
         public TeachData(string Title, string Info, string Picture, string Sound)
         {
+            t = Title;
+            i = Info;
+            p = Picture;
+            s = Sound;
 
         }
         /// <summary>
@@ -44,7 +48,16 @@ namespace Læringsapplikasjon
         /// <param name="isPic">If a picturefile is specified, this MUST be true</param>
         public TeachData(string Title, string Info, string File, bool isPic)
         {
-
+            t = Title;
+            i = Info;
+            if (isPic)
+            {
+                p = File;
+            }
+            else
+            {
+                s = File;
+            }
         }
         /// <summary>
         /// 
@@ -53,8 +66,8 @@ namespace Læringsapplikasjon
         /// <param name="Info">Info text</param>
         public TeachData(string Title, string Info)
         {
-
-
+            t = Title;
+            i = Info;
         }
     }
 }
