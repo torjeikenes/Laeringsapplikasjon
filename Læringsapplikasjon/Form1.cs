@@ -61,28 +61,49 @@ namespace Læringsapplikasjon
                 else
                     quizAudioBt.Visible = false;
             }
+            else
+            {
+                compQuizText.Text = "Du fikk " + Convert.ToString(correctAnswers) + " riktige svar";
+                compQuizP.Dock = DockStyle.Fill;
+            }
         }
 
         private string getAnswer()
         {
+            /*
             string ans = "";
+            Console.WriteLine(Controls.OfType<RadioButton>());
             foreach (RadioButton b in Controls.OfType<RadioButton>())
             {
+                Console.WriteLine("heihei");
                 if (b.Checked)
                 {
                     ans = b.Text;
                 }
             }
             return ans;
+            */
+
+            RadioButton correct = quizPanel.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            if (correct != null)
+                return correct.Text;
+            else
+                return "";
         }
 
         private void nextBt_Click(object sender, EventArgs e)
         {
+            Console.WriteLine(getAnswer());
             if (quizList[currentQuizNr].CheckAnswer(getAnswer()))
                 correctAnswers++;
 
             currentQuizNr++;
             LoadQuestion(currentQuizNr);
+
+            foreach (RadioButton b in quizPanel.Controls.OfType<RadioButton>())
+            {
+                b.Checked = false;
+            }
         }
         #endregion
 

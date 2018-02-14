@@ -44,10 +44,13 @@
             this.teachAudioBt = new System.Windows.Forms.Button();
             this.teachPict = new System.Windows.Forms.PictureBox();
             this.teachText = new System.Windows.Forms.Label();
+            this.compQuizP = new System.Windows.Forms.Panel();
+            this.compQuizText = new System.Windows.Forms.Label();
             this.quizPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quizPict)).BeginInit();
             this.teachPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.teachPict)).BeginInit();
+            this.compQuizP.SuspendLayout();
             this.SuspendLayout();
             // 
             // quizPanel
@@ -213,11 +216,29 @@
             this.teachText.TabIndex = 0;
             this.teachText.Text = "label1";
             // 
+            // compQuizP
+            // 
+            this.compQuizP.Controls.Add(this.compQuizText);
+            this.compQuizP.Location = new System.Drawing.Point(54, 446);
+            this.compQuizP.Name = "compQuizP";
+            this.compQuizP.Size = new System.Drawing.Size(347, 168);
+            this.compQuizP.TabIndex = 2;
+            // 
+            // compQuizText
+            // 
+            this.compQuizText.AutoSize = true;
+            this.compQuizText.Location = new System.Drawing.Point(26, 31);
+            this.compQuizText.Name = "compQuizText";
+            this.compQuizText.Size = new System.Drawing.Size(35, 13);
+            this.compQuizText.TabIndex = 0;
+            this.compQuizText.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1236, 479);
+            this.ClientSize = new System.Drawing.Size(1232, 626);
+            this.Controls.Add(this.compQuizP);
             this.Controls.Add(this.teachPanel);
             this.Controls.Add(this.quizPanel);
             this.Name = "Form1";
@@ -229,6 +250,8 @@
             this.teachPanel.ResumeLayout(false);
             this.teachPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.teachPict)).EndInit();
+            this.compQuizP.ResumeLayout(false);
+            this.compQuizP.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -251,6 +274,8 @@
         private System.Windows.Forms.PictureBox teachPict;
         private System.Windows.Forms.Label teachText;
         private System.Windows.Forms.Label teachInfo;
+        private System.Windows.Forms.Panel compQuizP;
+        private System.Windows.Forms.Label compQuizText;
     }
 }
 
