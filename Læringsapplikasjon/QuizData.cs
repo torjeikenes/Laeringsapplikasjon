@@ -14,6 +14,8 @@ namespace Læringsapplikasjon
         private string[] answers;
         private string correct;
 
+
+        #region konstruktor
         public QuizData(string q, string[] a, string c, string p, string au)
         {
             question = q;
@@ -31,7 +33,7 @@ namespace Læringsapplikasjon
             photo = p;
         }
 
-        public QuizData(string q, string[] a, string au, string c, bool isPict)
+        public QuizData(string q, string[] a, string c,  string au, bool isPict)
         {
             question = q;
             answers = a;
@@ -45,6 +47,35 @@ namespace Læringsapplikasjon
             answers = a;
             correct = c;
         }
+        #endregion
+
+        #region set_get_metoder
+        public string Question
+        {
+            get { return question; }
+            set { question = value; }
+        }
+
+        public string[] Answers
+        {
+            get { return answers; }
+            set { answers = value; }
+        }
+
+        public string Photo
+        {
+            get { return photo; }
+            set { photo = value; }
+        }
+
+        public string Audio
+        {
+            get { return audio; }
+            set { audio = value; }
+        }
+
+
+        #endregion
 
         public bool CheckAnswer(string answer)
         {

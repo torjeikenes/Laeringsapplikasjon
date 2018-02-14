@@ -9,9 +9,5 @@ namespace Læringsapplikasjon
     class Quiz
     {
 
-        public Quiz(string question, string picture, string )
-        {
-
-        }
     }
 }

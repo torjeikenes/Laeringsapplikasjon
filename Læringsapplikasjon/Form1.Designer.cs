@@ -29,31 +29,32 @@
         private void InitializeComponent()
         {
             this.quizPanel = new System.Windows.Forms.Panel();
-            this.quizText = new System.Windows.Forms.Label();
-            this.quizPict = new System.Windows.Forms.PictureBox();
-            this.quizAudioBt = new System.Windows.Forms.Button();
-            this.qst1 = new System.Windows.Forms.RadioButton();
-            this.qst2 = new System.Windows.Forms.RadioButton();
-            this.qst3 = new System.Windows.Forms.RadioButton();
-            this.qst4 = new System.Windows.Forms.RadioButton();
             this.nextBt = new System.Windows.Forms.Button();
-            this.backBt = new System.Windows.Forms.Button();
+            this.qst4 = new System.Windows.Forms.RadioButton();
+            this.qst3 = new System.Windows.Forms.RadioButton();
+            this.qst2 = new System.Windows.Forms.RadioButton();
+            this.qst1 = new System.Windows.Forms.RadioButton();
+            this.quizAudioBt = new System.Windows.Forms.Button();
+            this.quizPict = new System.Windows.Forms.PictureBox();
+            this.quizText = new System.Windows.Forms.Label();
             this.teachPanel = new System.Windows.Forms.Panel();
+            this.teachInfo = new System.Windows.Forms.Label();
             this.teachTilbakeBt = new System.Windows.Forms.Button();
             this.teachNesteBt = new System.Windows.Forms.Button();
             this.teachAudioBt = new System.Windows.Forms.Button();
             this.teachPict = new System.Windows.Forms.PictureBox();
             this.teachText = new System.Windows.Forms.Label();
-            this.teachInfo = new System.Windows.Forms.Label();
+            this.compQuizP = new System.Windows.Forms.Panel();
+            this.compQuizText = new System.Windows.Forms.Label();
             this.quizPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quizPict)).BeginInit();
             this.teachPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.teachPict)).BeginInit();
+            this.compQuizP.SuspendLayout();
             this.SuspendLayout();
             // 
             // quizPanel
             // 
-            this.quizPanel.Controls.Add(this.backBt);
             this.quizPanel.Controls.Add(this.nextBt);
             this.quizPanel.Controls.Add(this.qst4);
             this.quizPanel.Controls.Add(this.qst3);
@@ -67,64 +68,15 @@
             this.quizPanel.Size = new System.Drawing.Size(488, 404);
             this.quizPanel.TabIndex = 0;
             // 
-            // quizText
+            // nextBt
             // 
-            this.quizText.AutoSize = true;
-            this.quizText.Location = new System.Drawing.Point(89, 57);
-            this.quizText.Name = "quizText";
-            this.quizText.Size = new System.Drawing.Size(35, 13);
-            this.quizText.TabIndex = 0;
-            this.quizText.Text = "label1";
-            // 
-            // quizPict
-            // 
-            this.quizPict.Location = new System.Drawing.Point(289, 99);
-            this.quizPict.Name = "quizPict";
-            this.quizPict.Size = new System.Drawing.Size(155, 157);
-            this.quizPict.TabIndex = 1;
-            this.quizPict.TabStop = false;
-            // 
-            // quizAudioBt
-            // 
-            this.quizAudioBt.Location = new System.Drawing.Point(63, 270);
-            this.quizAudioBt.Name = "quizAudioBt";
-            this.quizAudioBt.Size = new System.Drawing.Size(75, 23);
-            this.quizAudioBt.TabIndex = 2;
-            this.quizAudioBt.Text = "|>";
-            this.quizAudioBt.UseVisualStyleBackColor = true;
-            // 
-            // qst1
-            // 
-            this.qst1.AutoSize = true;
-            this.qst1.Location = new System.Drawing.Point(63, 99);
-            this.qst1.Name = "qst1";
-            this.qst1.Size = new System.Drawing.Size(85, 17);
-            this.qst1.TabIndex = 3;
-            this.qst1.TabStop = true;
-            this.qst1.Text = "radioButton1";
-            this.qst1.UseVisualStyleBackColor = true;
-            // 
-            // qst2
-            // 
-            this.qst2.AutoSize = true;
-            this.qst2.Location = new System.Drawing.Point(63, 123);
-            this.qst2.Name = "qst2";
-            this.qst2.Size = new System.Drawing.Size(85, 17);
-            this.qst2.TabIndex = 4;
-            this.qst2.TabStop = true;
-            this.qst2.Text = "radioButton2";
-            this.qst2.UseVisualStyleBackColor = true;
-            // 
-            // qst3
-            // 
-            this.qst3.AutoSize = true;
-            this.qst3.Location = new System.Drawing.Point(63, 147);
-            this.qst3.Name = "qst3";
-            this.qst3.Size = new System.Drawing.Size(85, 17);
-            this.qst3.TabIndex = 5;
-            this.qst3.TabStop = true;
-            this.qst3.Text = "radioButton3";
-            this.qst3.UseVisualStyleBackColor = true;
+            this.nextBt.Location = new System.Drawing.Point(395, 355);
+            this.nextBt.Name = "nextBt";
+            this.nextBt.Size = new System.Drawing.Size(75, 23);
+            this.nextBt.TabIndex = 7;
+            this.nextBt.Text = "Neste";
+            this.nextBt.UseVisualStyleBackColor = true;
+            this.nextBt.Click += new System.EventHandler(this.nextBt_Click);
             // 
             // qst4
             // 
@@ -137,23 +89,65 @@
             this.qst4.Text = "radioButton4";
             this.qst4.UseVisualStyleBackColor = true;
             // 
-            // nextBt
+            // qst3
             // 
-            this.nextBt.Location = new System.Drawing.Point(395, 355);
-            this.nextBt.Name = "nextBt";
-            this.nextBt.Size = new System.Drawing.Size(75, 23);
-            this.nextBt.TabIndex = 7;
-            this.nextBt.Text = "Neste";
-            this.nextBt.UseVisualStyleBackColor = true;
+            this.qst3.AutoSize = true;
+            this.qst3.Location = new System.Drawing.Point(63, 147);
+            this.qst3.Name = "qst3";
+            this.qst3.Size = new System.Drawing.Size(85, 17);
+            this.qst3.TabIndex = 5;
+            this.qst3.TabStop = true;
+            this.qst3.Text = "radioButton3";
+            this.qst3.UseVisualStyleBackColor = true;
             // 
-            // backBt
+            // qst2
             // 
-            this.backBt.Location = new System.Drawing.Point(34, 355);
-            this.backBt.Name = "backBt";
-            this.backBt.Size = new System.Drawing.Size(75, 23);
-            this.backBt.TabIndex = 8;
-            this.backBt.Text = "Tilbake";
-            this.backBt.UseVisualStyleBackColor = true;
+            this.qst2.AutoSize = true;
+            this.qst2.Location = new System.Drawing.Point(63, 123);
+            this.qst2.Name = "qst2";
+            this.qst2.Size = new System.Drawing.Size(85, 17);
+            this.qst2.TabIndex = 4;
+            this.qst2.TabStop = true;
+            this.qst2.Text = "radioButton2";
+            this.qst2.UseVisualStyleBackColor = true;
+            // 
+            // qst1
+            // 
+            this.qst1.AutoSize = true;
+            this.qst1.Location = new System.Drawing.Point(63, 99);
+            this.qst1.Name = "qst1";
+            this.qst1.Size = new System.Drawing.Size(85, 17);
+            this.qst1.TabIndex = 3;
+            this.qst1.TabStop = true;
+            this.qst1.Text = "radioButton1";
+            this.qst1.UseVisualStyleBackColor = true;
+            // 
+            // quizAudioBt
+            // 
+            this.quizAudioBt.Location = new System.Drawing.Point(63, 270);
+            this.quizAudioBt.Name = "quizAudioBt";
+            this.quizAudioBt.Size = new System.Drawing.Size(75, 23);
+            this.quizAudioBt.TabIndex = 2;
+            this.quizAudioBt.Text = "|>";
+            this.quizAudioBt.UseVisualStyleBackColor = true;
+            this.quizAudioBt.Click += new System.EventHandler(this.quizAudioBt_Click);
+            // 
+            // quizPict
+            // 
+            this.quizPict.Location = new System.Drawing.Point(289, 99);
+            this.quizPict.Name = "quizPict";
+            this.quizPict.Size = new System.Drawing.Size(155, 157);
+            this.quizPict.TabIndex = 1;
+            this.quizPict.TabStop = false;
+            // 
+            // quizText
+            // 
+            this.quizText.AutoSize = true;
+            this.quizText.Location = new System.Drawing.Point(89, 57);
+            this.quizText.Name = "quizText";
+            this.quizText.Size = new System.Drawing.Size(35, 13);
+            this.quizText.TabIndex = 0;
+            this.quizText.Text = "label1";
             // 
             // teachPanel
             // 
@@ -167,6 +161,16 @@
             this.teachPanel.Name = "teachPanel";
             this.teachPanel.Size = new System.Drawing.Size(488, 404);
             this.teachPanel.TabIndex = 1;
+            // 
+            // teachInfo
+            // 
+            this.teachInfo.AutoSize = true;
+            this.teachInfo.Location = new System.Drawing.Point(89, 99);
+            this.teachInfo.MaximumSize = new System.Drawing.Size(200, 0);
+            this.teachInfo.Name = "teachInfo";
+            this.teachInfo.Size = new System.Drawing.Size(68, 13);
+            this.teachInfo.TabIndex = 9;
+            this.teachInfo.Text = "PumpOgSpyl";
             // 
             // teachTilbakeBt
             // 
@@ -212,31 +216,42 @@
             this.teachText.TabIndex = 0;
             this.teachText.Text = "label1";
             // 
-            // teachInfo
+            // compQuizP
             // 
-            this.teachInfo.AutoSize = true;
-            this.teachInfo.Location = new System.Drawing.Point(89, 99);
-            this.teachInfo.MaximumSize = new System.Drawing.Size(200, 0);
-            this.teachInfo.Name = "teachInfo";
-            this.teachInfo.Size = new System.Drawing.Size(68, 13);
-            this.teachInfo.TabIndex = 9;
-            this.teachInfo.Text = "PumpOgSpyl";
+            this.compQuizP.Controls.Add(this.compQuizText);
+            this.compQuizP.Location = new System.Drawing.Point(54, 446);
+            this.compQuizP.Name = "compQuizP";
+            this.compQuizP.Size = new System.Drawing.Size(347, 168);
+            this.compQuizP.TabIndex = 2;
+            // 
+            // compQuizText
+            // 
+            this.compQuizText.AutoSize = true;
+            this.compQuizText.Location = new System.Drawing.Point(26, 31);
+            this.compQuizText.Name = "compQuizText";
+            this.compQuizText.Size = new System.Drawing.Size(35, 13);
+            this.compQuizText.TabIndex = 0;
+            this.compQuizText.Text = "label1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1033, 479);
+            this.ClientSize = new System.Drawing.Size(1232, 626);
+            this.Controls.Add(this.compQuizP);
             this.Controls.Add(this.teachPanel);
             this.Controls.Add(this.quizPanel);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.quizPanel.ResumeLayout(false);
             this.quizPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quizPict)).EndInit();
             this.teachPanel.ResumeLayout(false);
             this.teachPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.teachPict)).EndInit();
+            this.compQuizP.ResumeLayout(false);
+            this.compQuizP.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -251,7 +266,6 @@
         private System.Windows.Forms.Button quizAudioBt;
         private System.Windows.Forms.PictureBox quizPict;
         private System.Windows.Forms.Label quizText;
-        private System.Windows.Forms.Button backBt;
         private System.Windows.Forms.Button nextBt;
         private System.Windows.Forms.Panel teachPanel;
         private System.Windows.Forms.Button teachTilbakeBt;
@@ -260,6 +274,8 @@
         private System.Windows.Forms.PictureBox teachPict;
         private System.Windows.Forms.Label teachText;
         private System.Windows.Forms.Label teachInfo;
+        private System.Windows.Forms.Panel compQuizP;
+        private System.Windows.Forms.Label compQuizText;
     }
 }
 
