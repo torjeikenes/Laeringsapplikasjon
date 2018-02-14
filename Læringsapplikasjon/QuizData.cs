@@ -45,5 +45,14 @@ namespace Læringsapplikasjon
             answers = a;
             correct = c;
         }
+
+        public bool CheckAnswer(string answer)
+        {
+            if (answer == correct)
+                return true;
+            else
+                return false;
+
+        }
     }
 }
