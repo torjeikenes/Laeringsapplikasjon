@@ -19,10 +19,12 @@ namespace Læringsapplikasjon
 
         private List<QuizData> quizList = new List<QuizData>();
 
+        int currentQuizNr;
+        int correctAnswers;
+
         private void Form1_Load(object sender, EventArgs e)
         {
             quizList.Add(new QuizData("What are frogs?", new string[] { "frog", "test", "ting", "frosk" }, "frog"));
-
 
         }
 
@@ -35,12 +37,28 @@ namespace Læringsapplikasjon
             qst2.Text = quizList[qstNr].Answers[1];
             qst3.Text = quizList[qstNr].Answers[2];
             qst4.Text = quizList[qstNr].Answers[3];
+        }
 
+        private string getAnswer()
+        {
+            string ans = "";
+            foreach (RadioButton b in Controls.OfType<RadioButton>())
+            {
+                if (b.Checked)
+                {
+                    ans = b.Text;
+                }
+            }
+            return ans;
         }
 
         private void nextBt_Click(object sender, EventArgs e)
         {
-            LoadQuestion(0);
+            if (quizList[currentQuizNr].CheckAnswer(getAnswer()))
+                correctAnswers++;
+
+            currentQuizNr++;
+            LoadQuestion(currentQuizNr);
 
         }
 

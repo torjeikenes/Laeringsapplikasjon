@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.quizPanel = new System.Windows.Forms.Panel();
-            this.backBt = new System.Windows.Forms.Button();
             this.nextBt = new System.Windows.Forms.Button();
             this.qst4 = new System.Windows.Forms.RadioButton();
             this.qst3 = new System.Windows.Forms.RadioButton();
@@ -53,7 +52,6 @@
             // 
             // quizPanel
             // 
-            this.quizPanel.Controls.Add(this.backBt);
             this.quizPanel.Controls.Add(this.nextBt);
             this.quizPanel.Controls.Add(this.qst4);
             this.quizPanel.Controls.Add(this.qst3);
@@ -66,15 +64,6 @@
             this.quizPanel.Name = "quizPanel";
             this.quizPanel.Size = new System.Drawing.Size(488, 404);
             this.quizPanel.TabIndex = 0;
-            // 
-            // backBt
-            // 
-            this.backBt.Location = new System.Drawing.Point(34, 355);
-            this.backBt.Name = "backBt";
-            this.backBt.Size = new System.Drawing.Size(75, 23);
-            this.backBt.TabIndex = 8;
-            this.backBt.Text = "Tilbake";
-            this.backBt.UseVisualStyleBackColor = true;
             // 
             // nextBt
             // 
@@ -253,7 +242,6 @@
         private System.Windows.Forms.Button quizAudioBt;
         private System.Windows.Forms.PictureBox quizPict;
         private System.Windows.Forms.Label quizText;
-        private System.Windows.Forms.Button backBt;
         private System.Windows.Forms.Button nextBt;
         private System.Windows.Forms.Panel teachPanel;
         private System.Windows.Forms.Button teachTilbakeBt;
