@@ -44,6 +44,7 @@
             this.teachAudioBt = new System.Windows.Forms.Button();
             this.teachPict = new System.Windows.Forms.PictureBox();
             this.teachText = new System.Windows.Forms.Label();
+            this.teachInfo = new System.Windows.Forms.Label();
             this.quizPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quizPict)).BeginInit();
             this.teachPanel.SuspendLayout();
@@ -156,6 +157,7 @@
             // 
             // teachPanel
             // 
+            this.teachPanel.Controls.Add(this.teachInfo);
             this.teachPanel.Controls.Add(this.teachTilbakeBt);
             this.teachPanel.Controls.Add(this.teachNesteBt);
             this.teachPanel.Controls.Add(this.teachAudioBt);
@@ -210,6 +212,16 @@
             this.teachText.TabIndex = 0;
             this.teachText.Text = "label1";
             // 
+            // teachInfo
+            // 
+            this.teachInfo.AutoSize = true;
+            this.teachInfo.Location = new System.Drawing.Point(89, 99);
+            this.teachInfo.MaximumSize = new System.Drawing.Size(200, 0);
+            this.teachInfo.Name = "teachInfo";
+            this.teachInfo.Size = new System.Drawing.Size(68, 13);
+            this.teachInfo.TabIndex = 9;
+            this.teachInfo.Text = "PumpOgSpyl";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,6 +259,7 @@
         private System.Windows.Forms.Button teachAudioBt;
         private System.Windows.Forms.PictureBox teachPict;
         private System.Windows.Forms.Label teachText;
+        private System.Windows.Forms.Label teachInfo;
     }
 }
 

@@ -8,13 +8,9 @@ namespace Læringsapplikasjon
 {
     class Quiz
     {
-        private string file;
-        private int questionNr;
 
-        public Quiz(string jsonFile,int qstNr)
+        public Quiz(string question, string picture, string )
         {
-            file = jsonFile;
-            questionNr = qstNr;
 
         }
     }
