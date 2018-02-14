@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Læringsapplikasjon
 {
@@ -21,22 +22,45 @@ namespace Læringsapplikasjon
 
         int currentQuizNr;
         int correctAnswers;
+        string rootDir = @"C:\Users\torje\Documents\Kurs\";
+        string courseName = "Test";
+        string soundFile;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            quizList.Add(new QuizData("What are frogs?", new string[] { "frog", "test", "ting", "frosk" }, "frog"));
-
+            quizList.Add(new QuizData("What are frogs?", new string[] { "frog", "test", "ting", "frosk" }, "frog", "frosk.png", "frog.wav"));
+            quizList.Add(new QuizData("Hvilket svar er Riktig?", new string[] { "Riktig", "test", "ting", "frosk" }, "Riktig"));
+            LoadQuestion(0);
         }
 
-
-
+        #region quiz
         private void LoadQuestion(int qstNr)
         {
-            quizText.Text = quizList[qstNr].Question;
-            qst1.Text = quizList[qstNr].Answers[0];
-            qst2.Text = quizList[qstNr].Answers[1];
-            qst3.Text = quizList[qstNr].Answers[2];
-            qst4.Text = quizList[qstNr].Answers[3];
+            if (qstNr < quizList.Count)
+            {
+                QuizData qu = quizList[qstNr];
+                quizText.Text = qu.Question;
+                qst1.Text = qu.Answers[0];
+                qst2.Text = qu.Answers[1];
+                qst3.Text = qu.Answers[2];
+                qst4.Text = qu.Answers[3];
+
+                if (qu.Photo != null)
+                {
+                    quizPict.Visible = true;
+                    quizPict.Load(rootDir + courseName + "\\" + qu.Photo);
+                }
+                else
+                    quizPict.Visible = false;
+
+                if (qu.Audio != null)
+                {
+                    quizAudioBt.Visible = true;
+                    soundFile = qu.Audio;
+                }
+                else
+                    quizAudioBt.Visible = false;
+            }
         }
 
         private string getAnswer()
@@ -59,8 +83,13 @@ namespace Læringsapplikasjon
 
             currentQuizNr++;
             LoadQuestion(currentQuizNr);
-
         }
+        #endregion
 
+        private void quizAudioBt_Click(object sender, EventArgs e)
+        {
+            SoundPlayer sound = new SoundPlayer(rootDir + courseName + "\\" + soundFile);
+            sound.Play();
+        }
     }
 }

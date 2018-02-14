@@ -33,7 +33,7 @@ namespace Læringsapplikasjon
             photo = p;
         }
 
-        public QuizData(string q, string[] a, string au, string c, bool isPict)
+        public QuizData(string q, string[] a, string c,  string au, bool isPict)
         {
             question = q;
             answers = a;

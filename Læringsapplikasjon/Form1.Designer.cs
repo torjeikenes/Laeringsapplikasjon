@@ -127,6 +127,7 @@
             this.quizAudioBt.TabIndex = 2;
             this.quizAudioBt.Text = "|>";
             this.quizAudioBt.UseVisualStyleBackColor = true;
+            this.quizAudioBt.Click += new System.EventHandler(this.quizAudioBt_Click);
             // 
             // quizPict
             // 
