@@ -32,13 +32,13 @@ namespace Læringsapplikasjon
         /// <param name="t">Teach title</param>
         /// <param name="i">Info text</param>
         /// <param name="p">Path for picture file</param>
-        /// <param name="a">Path for sound file</param>
-        public TeachData(string t, string i, string p, string a)
+        /// <param name="au">Path for sound file</param>
+        public TeachData(string t, string i, string p, string au)
         {
             title = t;
             info = i;
             photo = p;
-            audio = a;
+            audio = au;
 
         }
         /// <summary>

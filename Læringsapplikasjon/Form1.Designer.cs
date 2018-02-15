@@ -47,6 +47,7 @@
             this.compQuizP = new System.Windows.Forms.Panel();
             this.compQuizText = new System.Windows.Forms.Label();
             this.startPanel = new System.Windows.Forms.Panel();
+            this.loadError = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btStart = new System.Windows.Forms.Button();
             this.btSelectFolder = new System.Windows.Forms.Button();
@@ -242,6 +243,7 @@
             // 
             // startPanel
             // 
+            this.startPanel.Controls.Add(this.loadError);
             this.startPanel.Controls.Add(this.label1);
             this.startPanel.Controls.Add(this.btStart);
             this.startPanel.Controls.Add(this.btSelectFolder);
@@ -250,6 +252,14 @@
             this.startPanel.Name = "startPanel";
             this.startPanel.Size = new System.Drawing.Size(384, 168);
             this.startPanel.TabIndex = 3;
+            // 
+            // loadError
+            // 
+            this.loadError.AutoSize = true;
+            this.loadError.Location = new System.Drawing.Point(24, 94);
+            this.loadError.Name = "loadError";
+            this.loadError.Size = new System.Drawing.Size(0, 13);
+            this.loadError.TabIndex = 5;
             // 
             // label1
             // 
@@ -348,6 +358,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btStart;
         private System.Windows.Forms.Button btSelectFolder;
+        private System.Windows.Forms.Label loadError;
     }
 }
 
