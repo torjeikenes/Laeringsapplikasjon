@@ -1,0 +1,31 @@
+{
+	"teach": [
+		{
+			"title":"Test1",
+			"info":"Info about test1",
+			"photo":"frosk.png",
+			"audio":"frog.waw"
+		},
+		{
+			"title":"Test2",
+			"info":"Info about test2",
+			"photo":"frosk.png",
+			"audio":"frog.waw"
+		},
+		{
+			"title":"Test3",
+			"info":"Info about test3",
+			"photo":"frosk.png",
+			"audio":"frog.waw"
+		}
+	],
+	"quiz":[
+		{
+			"question":"Test1",
+			"answer":["Answer1", "Answer2", "Answer3", "Answer4"],
+			"correct":"Answer1",
+			"photo":"frosk.png",
+			"audio":"frog.waw"
+		}
+	]
+}
