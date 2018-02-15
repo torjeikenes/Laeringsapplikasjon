@@ -22,7 +22,7 @@ namespace Læringsapplikasjon
 
         int currentQuizNr;
         int correctAnswers;
-        string rootDir = @"C:\Users\torje\Documents\Kurs\";
+        string rootDir = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         string courseName = "Test";
         string soundFile;
 
@@ -48,7 +48,7 @@ namespace Læringsapplikasjon
                 if (qu.Photo != null)
                 {
                     quizPict.Visible = true;
-                    quizPict.Load(rootDir + courseName + "\\" + qu.Photo);
+                    quizPict.Load(rootDir + "\\" +  courseName + "\\" + qu.Photo);
                 }
                 else
                     quizPict.Visible = false;
