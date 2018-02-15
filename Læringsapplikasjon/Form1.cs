@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,12 +10,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json.Bson;
+using Newtonsoft.Json.Linq;
 
 namespace Læringsapplikasjon
 {
-    public partial class Form1 : Form
+    public partial class Laeringsspill : Form
     {
-        public Form1()
+        public Laeringsspill()
         {
             InitializeComponent();
         }
@@ -22,15 +28,20 @@ namespace Læringsapplikasjon
 
         int currentQuizNr;
         int correctAnswers;
-        string rootDir = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        string rootDir = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Kurs\";
         string courseName = "Test";
         string soundFile;
+        List<string> dirs = new List<string>();
+        List<string> games = new List<string>();
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Laeringsspill_Load(object sender, EventArgs e)
         {
+            folderGame.SelectedPath = rootDir;
+            LoadFolders(rootDir);
+            /*
             quizList.Add(new QuizData("What are frogs?", new string[] { "frog", "test", "ting", "frosk" }, "frog", "frosk.png", "frog.wav"));
             quizList.Add(new QuizData("Hvilket svar er Riktig?", new string[] { "Riktig", "test", "ting", "frosk" }, "Riktig"));
-            LoadQuestion(0);
+            LoadQuestion(0);*/
         }
 
         #region quiz
@@ -48,7 +59,7 @@ namespace Læringsapplikasjon
                 if (qu.Photo != null)
                 {
                     quizPict.Visible = true;
-                    quizPict.Load(rootDir + "\\" +  courseName + "\\" + qu.Photo);
+                    quizPict.Load(rootDir + courseName + "\\" + qu.Photo);
                 }
                 else
                     quizPict.Visible = false;
@@ -111,6 +122,64 @@ namespace Læringsapplikasjon
         {
             SoundPlayer sound = new SoundPlayer(rootDir + courseName + "\\" + soundFile);
             sound.Play();
+        }
+
+        private void btSelectFolder_Click(object sender, EventArgs e)
+        {
+            folderGame.ShowDialog();
+            rootDir = folderGame.SelectedPath + "\\";
+            LoadFolders(rootDir);
+            //Console.WriteLine(folderGame.SelectedPath);
+        }
+
+        private void LoadFolders(string d)
+        {
+            if (dirs != null)
+                dirs.Clear();
+            if (games != null)
+                games.Clear();
+            if (listGames.Items != null)
+                listGames.Items.Clear();
+
+            string[] dir = Directory.GetDirectories(d);
+
+            for (int i = 0; i < dir.Length; i++)
+            {
+                dirs.Add(dir[i]);
+                dir[i] = dir[i].Replace(rootDir, "");
+                listGames.Items.Add(dir[i]);
+                games.Add(dir[i]);
+                
+            }
+
+            foreach (string s in dirs)
+            {
+                Console.WriteLine(s);
+            }
+        }
+
+        private void btStart_Click(object sender, EventArgs e)
+        {
+            if (listGames.Text != "")
+                Console.WriteLine(listGames.Text);
+        }
+
+        private void ReadJSON(string d, string f)
+        {
+            string jFile = d + "\\" + f + ".json";
+
+            if (!File.Exists(jFile))
+            {
+
+            }
+            else
+            {
+                string json = File.ReadAllText(jFile);
+                JObject game = JObject.Parse(json);
+
+                IList<JToken> quizList = game["quiz"].Children().ToList();
+            }
+            
         }
     }
 }
