@@ -53,6 +53,7 @@
             this.btSelectFolder = new System.Windows.Forms.Button();
             this.listGames = new System.Windows.Forms.ComboBox();
             this.folderGame = new System.Windows.Forms.FolderBrowserDialog();
+            this.btNewGame = new System.Windows.Forms.Button();
             this.quizPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quizPict)).BeginInit();
             this.teachPanel.SuspendLayout();
@@ -138,7 +139,7 @@
             this.quizAudioBt.TabIndex = 2;
             this.quizAudioBt.Text = "|>";
             this.quizAudioBt.UseVisualStyleBackColor = true;
-            this.quizAudioBt.Click += new System.EventHandler(this.quizAudioBt_Click);
+            this.quizAudioBt.Click += new System.EventHandler(this.AudioBt_Click);
             // 
             // quizPict
             // 
@@ -188,6 +189,7 @@
             this.teachTilbakeBt.TabIndex = 8;
             this.teachTilbakeBt.Text = "Tilbake";
             this.teachTilbakeBt.UseVisualStyleBackColor = true;
+            this.teachTilbakeBt.Click += new System.EventHandler(this.changeTeach);
             // 
             // teachNesteBt
             // 
@@ -197,6 +199,7 @@
             this.teachNesteBt.TabIndex = 7;
             this.teachNesteBt.Text = "Neste";
             this.teachNesteBt.UseVisualStyleBackColor = true;
+            this.teachNesteBt.Click += new System.EventHandler(this.changeTeach);
             // 
             // teachAudioBt
             // 
@@ -206,6 +209,7 @@
             this.teachAudioBt.TabIndex = 2;
             this.teachAudioBt.Text = "|>";
             this.teachAudioBt.UseVisualStyleBackColor = true;
+            this.teachAudioBt.Click += new System.EventHandler(this.AudioBt_Click);
             // 
             // teachPict
             // 
@@ -226,6 +230,7 @@
             // 
             // compQuizP
             // 
+            this.compQuizP.Controls.Add(this.btNewGame);
             this.compQuizP.Controls.Add(this.compQuizText);
             this.compQuizP.Location = new System.Drawing.Point(54, 446);
             this.compQuizP.Name = "compQuizP";
@@ -306,6 +311,16 @@
             this.folderGame.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.folderGame.ShowNewFolderButton = false;
             // 
+            // btNewGame
+            // 
+            this.btNewGame.Location = new System.Drawing.Point(241, 119);
+            this.btNewGame.Name = "btNewGame";
+            this.btNewGame.Size = new System.Drawing.Size(75, 23);
+            this.btNewGame.TabIndex = 1;
+            this.btNewGame.Text = "Nytt spill";
+            this.btNewGame.UseVisualStyleBackColor = true;
+            this.btNewGame.Click += new System.EventHandler(this.btNewGame_Click);
+            // 
             // Laeringsspill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,6 +376,7 @@
         private System.Windows.Forms.Button btStart;
         private System.Windows.Forms.Button btSelectFolder;
         private System.Windows.Forms.Label loadError;
+        private System.Windows.Forms.Button btNewGame;
     }
 }
 

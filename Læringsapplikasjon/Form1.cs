@@ -28,6 +28,7 @@ namespace Læringsapplikasjon
 
         int currentQuizNr;
         int correctAnswers;
+        int currentTeachNr;
         string rootDir = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Kurs\";
         string courseName = "Test";
         string soundFile;
@@ -77,7 +78,7 @@ namespace Læringsapplikasjon
                 if (qu.Photo != "")
                 {
                     quizPict.Visible = true;
-                    quizPict.Load(rootDir + courseName + "\\" + qu.Photo);
+                    quizPict.Load(gameDir + qu.Photo);
                 }
                 else
                     quizPict.Visible = false;
@@ -135,15 +136,76 @@ namespace Læringsapplikasjon
             }
         }
 
-        private void quizAudioBt_Click(object sender, EventArgs e)
+        #endregion
+
+        private void AudioBt_Click(object sender, EventArgs e)
         {
             SoundPlayer sound = new SoundPlayer(gameDir + "\\" + soundFile);
             Console.WriteLine(gameDir + soundFile);
             sound.Play();
         }
+
+        #region Teach
+
+        private void LoadTeach(int tNr)
+        {
+            if (tNr < teachList.Count)
+            {
+                TeachData td = teachList[tNr];
+
+                teachText.Text = td.Title;
+                teachInfo.Text = td.Info;
+
+                if (td.Photo != "")
+                {
+                    teachPict.Load(gameDir + td.Photo);
+                    teachPict.Visible = true;
+                }
+                else
+                    teachPict.Visible = false;
+
+                if (td.Audio != "")
+                {
+                    teachAudioBt.Visible = true;
+                    soundFile = td.Audio;
+                }
+                else
+                    teachAudioBt.Visible = false;
+            }
+        }
+
+        private void changeTeach(object sender, EventArgs e)
+        {
+
+            Button b = sender as Button;
+
+            switch (b.Text)
+            {
+                case "Tilbake":
+                    if (currentTeachNr > 0)
+                    {
+                        currentTeachNr--;
+                        LoadTeach(currentTeachNr);
+                        teachNesteBt.Text = "Neste";
+                    }
+                    break;
+                case "Neste":
+                    currentTeachNr++;
+                    if (currentTeachNr >= teachList.Count - 1)
+                        teachNesteBt.Text = "Quiz!";
+                    else
+                        teachNesteBt.Text = "Neste";
+
+                    LoadTeach(currentTeachNr);
+                    break;
+                case "Quiz!":
+                    currentTeachNr = 0;
+                    LoadPanel(quizPanel);
+                    teachNesteBt.Text = "Neste";
+                    break;
+            }
+        }
         #endregion
-
-
 
         #region Load-funksjoner
 
@@ -189,15 +251,24 @@ namespace Læringsapplikasjon
                 gameFile = listGames.Text;
                 gameDir = rootDir + gameFile + "\\";
                 ReadJSON(gameDir, listGames.Text);
+                LoadQuestion(currentQuizNr);
+                LoadTeach(currentTeachNr);
+                LoadPanel(teachPanel);
+                loadError.Text = "";
             }
-            Console.WriteLine(listGames.Text);
-            LoadQuestion(0);
-
-            LoadPanel(quizPanel);
+            else
+            {
+                loadError.Text = "Velg en folder med en .JSON fil med ";
+            }
+            //Console.WriteLine(listGames.Text);
         }
 
         private void ReadJSON(string r, string f)
         {
+            if (teachList != null)
+                teachList.Clear();
+            if (quizList != null)
+                quizList.Clear();
             string jFile = r + f + ".json";
 
             Console.WriteLine(jFile);
@@ -276,5 +347,10 @@ namespace Læringsapplikasjon
             
         }
         #endregion
+
+        private void btNewGame_Click(object sender, EventArgs e)
+        {
+            LoadPanel(startPanel);
+        }
     }
 }
