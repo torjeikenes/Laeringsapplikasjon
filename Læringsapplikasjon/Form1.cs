@@ -125,6 +125,7 @@ namespace Læringsapplikasjon
         private void quizAudioBt_Click(object sender, EventArgs e)
         {
             SoundPlayer sound = new SoundPlayer(gameDir + "\\" + soundFile);
+            Console.WriteLine(gameDir + soundFile);
             sound.Play();
         }
         #endregion
