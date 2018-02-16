@@ -74,7 +74,7 @@ namespace Læringsapplikasjon
                 qst3.Text = qu.Answers[2];
                 qst4.Text = qu.Answers[3];
 
-                if (qu.Photo != null)
+                if (qu.Photo != "")
                 {
                     quizPict.Visible = true;
                     quizPict.Load(rootDir + courseName + "\\" + qu.Photo);
@@ -82,7 +82,7 @@ namespace Læringsapplikasjon
                 else
                     quizPict.Visible = false;
 
-                if (qu.Audio != null)
+                if (qu.Audio != "")
                 {
                     quizAudioBt.Visible = true;
                     soundFile = qu.Audio;
@@ -193,9 +193,7 @@ namespace Læringsapplikasjon
             Console.WriteLine(listGames.Text);
             LoadQuestion(0);
 
-            LoadPanel(teachPanel);
-
-
+            LoadPanel(quizPanel);
         }
 
         private void ReadJSON(string r, string f)
