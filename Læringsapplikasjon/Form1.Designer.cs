@@ -1,6 +1,6 @@
 ﻿namespace Læringsapplikasjon
 {
-    partial class Form1
+    partial class Laeringsspill
     {
         /// <summary>
         /// Required designer variable.
@@ -46,11 +46,19 @@
             this.teachText = new System.Windows.Forms.Label();
             this.compQuizP = new System.Windows.Forms.Panel();
             this.compQuizText = new System.Windows.Forms.Label();
+            this.startPanel = new System.Windows.Forms.Panel();
+            this.loadError = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btStart = new System.Windows.Forms.Button();
+            this.btSelectFolder = new System.Windows.Forms.Button();
+            this.listGames = new System.Windows.Forms.ComboBox();
+            this.folderGame = new System.Windows.Forms.FolderBrowserDialog();
             this.quizPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quizPict)).BeginInit();
             this.teachPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.teachPict)).BeginInit();
             this.compQuizP.SuspendLayout();
+            this.startPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // quizPanel
@@ -233,17 +241,83 @@
             this.compQuizText.TabIndex = 0;
             this.compQuizText.Text = "label1";
             // 
-            // Form1
+            // startPanel
+            // 
+            this.startPanel.Controls.Add(this.loadError);
+            this.startPanel.Controls.Add(this.label1);
+            this.startPanel.Controls.Add(this.btStart);
+            this.startPanel.Controls.Add(this.btSelectFolder);
+            this.startPanel.Controls.Add(this.listGames);
+            this.startPanel.Location = new System.Drawing.Point(449, 446);
+            this.startPanel.Name = "startPanel";
+            this.startPanel.Size = new System.Drawing.Size(384, 168);
+            this.startPanel.TabIndex = 3;
+            // 
+            // loadError
+            // 
+            this.loadError.AutoSize = true;
+            this.loadError.Location = new System.Drawing.Point(24, 94);
+            this.loadError.Name = "loadError";
+            this.loadError.Size = new System.Drawing.Size(0, 13);
+            this.loadError.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Castellar", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(24, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(256, 33);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Læringsspillet";
+            // 
+            // btStart
+            // 
+            this.btStart.Location = new System.Drawing.Point(194, 65);
+            this.btStart.Name = "btStart";
+            this.btStart.Size = new System.Drawing.Size(75, 23);
+            this.btStart.TabIndex = 3;
+            this.btStart.Text = "Start";
+            this.btStart.UseVisualStyleBackColor = true;
+            this.btStart.Click += new System.EventHandler(this.btStart_Click);
+            // 
+            // btSelectFolder
+            // 
+            this.btSelectFolder.Location = new System.Drawing.Point(275, 65);
+            this.btSelectFolder.Name = "btSelectFolder";
+            this.btSelectFolder.Size = new System.Drawing.Size(90, 23);
+            this.btSelectFolder.TabIndex = 2;
+            this.btSelectFolder.Text = "Select Folder";
+            this.btSelectFolder.UseVisualStyleBackColor = true;
+            this.btSelectFolder.Click += new System.EventHandler(this.btSelectFolder_Click);
+            // 
+            // listGames
+            // 
+            this.listGames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.listGames.FormattingEnabled = true;
+            this.listGames.Location = new System.Drawing.Point(24, 66);
+            this.listGames.MaxDropDownItems = 2;
+            this.listGames.Name = "listGames";
+            this.listGames.Size = new System.Drawing.Size(164, 21);
+            this.listGames.TabIndex = 1;
+            // 
+            // folderGame
+            // 
+            this.folderGame.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            this.folderGame.ShowNewFolderButton = false;
+            // 
+            // Laeringsspill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1232, 626);
+            this.Controls.Add(this.startPanel);
             this.Controls.Add(this.compQuizP);
             this.Controls.Add(this.teachPanel);
             this.Controls.Add(this.quizPanel);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "Laeringsspill";
+            this.Text = "Læringsspill";
+            this.Load += new System.EventHandler(this.Laeringsspill_Load);
             this.quizPanel.ResumeLayout(false);
             this.quizPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.quizPict)).EndInit();
@@ -252,6 +326,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.teachPict)).EndInit();
             this.compQuizP.ResumeLayout(false);
             this.compQuizP.PerformLayout();
+            this.startPanel.ResumeLayout(false);
+            this.startPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -276,6 +352,13 @@
         private System.Windows.Forms.Label teachInfo;
         private System.Windows.Forms.Panel compQuizP;
         private System.Windows.Forms.Label compQuizText;
+        private System.Windows.Forms.Panel startPanel;
+        private System.Windows.Forms.ComboBox listGames;
+        private System.Windows.Forms.FolderBrowserDialog folderGame;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btStart;
+        private System.Windows.Forms.Button btSelectFolder;
+        private System.Windows.Forms.Label loadError;
     }
 }
 

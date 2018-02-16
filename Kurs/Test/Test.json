@@ -1,0 +1,38 @@
+{
+	"teach": [
+		{
+			"title":"Test1",
+			"info":"Info about test1",
+			"photo":"frosk.png",
+			"audio":"frog.wav"
+		},
+		{
+			"title":"Test2",
+			"info":"Info about test2",
+			"photo":"frosk.png",
+			"audio":"frog.wav"
+		},
+		{
+			"title":"Test3",
+			"info":"Info about test3",
+			"photo":"frosk.png",
+			"audio":"frog.wav"
+		}
+	],
+	"quiz":[
+		{
+			"question":"What are frogs?",
+			"answer":["en Meme", "frosk", "Answer3", "Answer4"],
+			"correct":"frosk",
+			"photo":"frosk.png",
+			"audio":"frog.wav"
+		},
+		{
+			"question":"testus",
+			"answer":["maksimus", "Answer2", "Answer3", "Answer4"],
+			"correct":"maksimus",
+			"photo":"frosk.png",
+			"audio":""
+		}
+	]
+}

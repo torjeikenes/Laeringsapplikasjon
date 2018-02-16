@@ -10,14 +10,16 @@ namespace Læringsapplikasjon
     {
 
         #region Variabler
-        string t; // Title
-        string i; // Info
-        string p; // Picture file path
-        string s; // Sound file path
-        bool iP;  // true if only Picturepath
+
+        string title;   // Title
+        string info;    // Info
+        string photo;   // Picture file path
+        string audio;   // Sound file path
+        bool isPhoto;   // true if only Picturepath
 
         #endregion
 
+        #region Konstruktør
 
         /// <summary>
         /// Default constructor for TeachData 
@@ -27,47 +29,74 @@ namespace Læringsapplikasjon
         /// <summary>
         /// Creates TeachData with Title, Info, Picturepath and Soundpath
         /// </summary>
-        /// <param name="Title">Teach title</param>
-        /// <param name="Info">Info text</param>
-        /// <param name="Picture">Path for picture file</param>
-        /// <param name="Sound">Path for sound file</param>
-        public TeachData(string Title, string Info, string Picture, string Sound)
+        /// <param name="t">Teach title</param>
+        /// <param name="i">Info text</param>
+        /// <param name="p">Path for picture file</param>
+        /// <param name="au">Path for sound file</param>
+        public TeachData(string t, string i, string p, string au)
         {
-            t = Title;
-            i = Info;
-            p = Picture;
-            s = Sound;
+            title = t;
+            info = i;
+            photo = p;
+            audio = au;
 
         }
         /// <summary>
         /// Creates TeachData with Title, Info, Sound
         /// </summary>
-        /// <param name="Title">Teach title</param>
-        /// <param name="Info">Info text</param>
-        /// <param name="File">Filepath for picture or sound</param>
-        /// <param name="isPic">If a picturefile is specified, this MUST be true</param>
-        public TeachData(string Title, string Info, string File, bool isPic)
+        /// <param name="t">Teach title</param>
+        /// <param name="i">Info text</param>
+        /// <param name="f">Filepath for picture or sound</param>
+        /// <param name="iP">If a picturefile is specified, this MUST be true</param>
+        public TeachData(string t, string i, string f, bool iP)
         {
-            t = Title;
-            i = Info;
-            if (isPic)
-            {
-                p = File;
-            }
+            title = t;
+            info = i;
+            if (iP)
+                photo = f;
             else
-            {
-                s = File;
-            }
+                audio = f;
         }
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="Title">Teach title</param>
-        /// <param name="Info">Info text</param>
-        public TeachData(string Title, string Info)
+        /// <param name="t">Teach title</param>
+        /// <param name="i">Info text</param>
+        public TeachData(string t, string i)
         {
-            t = Title;
-            i = Info;
+            title = t;
+            info = i;
         }
+        #endregion
+
+        #region set_get_metoder
+
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+        public string Info
+        {
+            get { return title; }
+            set { title = value; }
+        }
+        public string Photo
+        {
+            get { return title; }
+            set { title = value; }
+        }
+        public string Audio
+        {
+            get { return title; }
+            set { title = value; }
+        }
+        public bool IsPhoto
+        {
+            get { return isPhoto; }
+            set { isPhoto = value; }
+        }
+
+        #endregion
     }
 }

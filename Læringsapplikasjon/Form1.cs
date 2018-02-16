@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,32 +10,46 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json.Bson;
+using Newtonsoft.Json.Linq;
 
 namespace Læringsapplikasjon
 {
-    public partial class Form1 : Form
+    public partial class Laeringsspill : Form
     {
-        public Form1()
+        public Laeringsspill()
         {
             InitializeComponent();
         }
 
         private List<QuizData> quizList = new List<QuizData>();
+        private List<TeachData> teachList = new List<TeachData>();
 
         int currentQuizNr;
         int correctAnswers;
-        string rootDir = @"C:\Users\torje\Documents\Kurs\";
+        string rootDir = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Kurs\";
         string courseName = "Test";
         string soundFile;
+        string gameFile;
+        string gameDir;
 
-        private void Form1_Load(object sender, EventArgs e)
+        List<string> dirs = new List<string>();
+        List<string> games = new List<string>();
+
+        private void Laeringsspill_Load(object sender, EventArgs e)
         {
+            folderGame.SelectedPath = rootDir;
+            LoadFolders(rootDir);
+            /*
             quizList.Add(new QuizData("What are frogs?", new string[] { "frog", "test", "ting", "frosk" }, "frog", "frosk.png", "frog.wav"));
             quizList.Add(new QuizData("Hvilket svar er Riktig?", new string[] { "Riktig", "test", "ting", "frosk" }, "Riktig"));
-            LoadQuestion(0);
+            LoadQuestion(0);*/
         }
 
         #region quiz
+
         private void LoadQuestion(int qstNr)
         {
             if (qstNr < quizList.Count)
@@ -105,12 +121,146 @@ namespace Læringsapplikasjon
                 b.Checked = false;
             }
         }
-        #endregion
 
         private void quizAudioBt_Click(object sender, EventArgs e)
         {
-            SoundPlayer sound = new SoundPlayer(rootDir + courseName + "\\" + soundFile);
+            SoundPlayer sound = new SoundPlayer(gameDir + "\\" + soundFile);
+            Console.WriteLine(gameDir + soundFile);
             sound.Play();
         }
+        #endregion
+
+
+
+        #region Load-funksjoner
+
+        private void btSelectFolder_Click(object sender, EventArgs e)
+        {
+            folderGame.ShowDialog();
+            rootDir = folderGame.SelectedPath + "\\";
+            LoadFolders(rootDir);
+            //Console.WriteLine(folderGame.SelectedPath);
+        }
+
+        private void LoadFolders(string d)
+        {
+            if (dirs != null)
+                dirs.Clear();
+            if (games != null)
+                games.Clear();
+            if (listGames.Items != null)
+                listGames.Items.Clear();
+
+            string[] dir = Directory.GetDirectories(d);
+
+            for (int i = 0; i < dir.Length; i++)
+            {
+                dirs.Add(dir[i]);
+                dir[i] = dir[i].Replace(rootDir, "");
+                listGames.Items.Add(dir[i]);
+                games.Add(dir[i]);
+                
+            }
+
+            foreach (string s in dirs)
+            {
+                Console.WriteLine(s);
+            }
+        }
+
+        private void btStart_Click(object sender, EventArgs e)
+        {
+            loadError.Text = "";
+            if (listGames.Text != "")
+            {
+                gameFile = listGames.Text;
+                gameDir = rootDir + gameFile + "\\";
+                ReadJSON(gameDir, listGames.Text);
+            }
+            Console.WriteLine(listGames.Text);
+            LoadQuestion(0);
+
+        }
+
+        private void ReadJSON(string r, string f)
+        {
+            string jFile = r + f + ".json";
+
+            Console.WriteLine(jFile);
+
+            if (!File.Exists(jFile))
+            {
+                loadError.Text = "Mappen " + f + " mangler en .JSON fil!";
+            }
+            else
+            {
+                //
+                // Kode for å hente ut data for teach-delen
+                // 
+
+                // Leser json-filen og putter den i en string
+                string json = File.ReadAllText(jFile);
+                Console.WriteLine(json);
+
+                // Parser den over til et format json.net kan jobbe med
+                JObject game = JObject.Parse(json);
+
+                // Henter ut alle tittler med key "teach"
+                var tTitles = from p in game["teach"] select (string)p["title"];
+
+                // Gjør om titles til en vanlig liste for å telle antall læringskort det er
+                List<string> s = new List<string>();
+                foreach (var item in tTitles)
+                {
+                    s.Add(item);
+                }
+
+                // Lager teachData-objekter med data fra json-filen
+                for (int i = 0; i < s.Count; i++)
+                {
+                    string tTitle = (string)game["teach"][i]["title"];
+                    string tInfo = (string)game["teach"][i]["info"];
+                    string tPhoto = (string)game["teach"][i]["photo"];
+                    string tAudio = (string)game["teach"][i]["audio"];
+
+                    teachList.Add(new TeachData(tTitle, tInfo, tPhoto, tAudio));
+                    Console.WriteLine(tTitle + " : " + tInfo + " : " + tPhoto + " : " + tAudio);
+                }
+
+                //
+                // Kode for å hente ut data for quiz-delen
+                //
+
+                // Henter ut alle tittler med key "teach"
+                var Questions = from p in game["quiz"] select (string)p["question"];
+
+                // Gjør om titles til en vanlig liste for å telle antall læringskort det er
+                List<string> q = new List<string>();
+                foreach (var item in Questions)
+                {
+                    q.Add(item);
+                }
+
+                // Lager teachData-objekter med data fra json-filen
+                for (int i = 0; i < q.Count; i++)
+                {
+                    string question = (string)game["quiz"][i]["question"];
+
+                    JArray answer = (JArray)game["quiz"][i]["answer"];
+                    string[] answers = answer.Select(a => (string)a).ToArray();
+
+                    string correct = (string)game["quiz"][i]["correct"];
+                    string photo = (string)game["quiz"][i]["photo"];
+                    string audio = (string)game["quiz"][i]["audio"];
+
+                    quizList.Add(new QuizData(question, answers, correct, photo, audio));
+                    //Console.WriteLine(question + " : " + answers + " : " + correct + " : " + photo + " : " + audio);
+                    //Console.WriteLine(answers[0] + " : " + answers[1] + " : " + answers[2] + " : " + answers[3]);
+                }
+
+            }
+            
+        }
+        #endregion
     }
 }
