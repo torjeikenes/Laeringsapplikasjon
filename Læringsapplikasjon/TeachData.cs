@@ -42,32 +42,6 @@ namespace Læringsapplikasjon
             audio = au;
 
         }
-        /// <summary>
-        /// Creates TeachData with Title, Info, Sound
-        /// </summary>
-        /// <param name="t">Teach title</param>
-        /// <param name="i">Info text</param>
-        /// <param name="f">Filepath for picture or sound</param>
-        /// <param name="iP">If a picturefile is specified, this MUST be true</param>
-        public TeachData(string t, string i, string f, bool iP)
-        {
-            title = t;
-            info = i;
-            if (iP)
-                photo = f;
-            else
-                audio = f;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="t">Teach title</param>
-        /// <param name="i">Info text</param>
-        public TeachData(string t, string i)
-        {
-            title = t;
-            info = i;
-        }
         #endregion
 
         #region set_get_metoder
@@ -79,25 +53,19 @@ namespace Læringsapplikasjon
         }
         public string Info
         {
-            get { return title; }
-            set { title = value; }
+            get { return info; }
+            set { info = value; }
         }
         public string Photo
         {
-            get { return title; }
-            set { title = value; }
+            get { return photo; }
+            set { photo = value; }
         }
         public string Audio
         {
-            get { return title; }
-            set { title = value; }
+            get { return audio; }
+            set { audio = value; }
         }
-        public bool IsPhoto
-        {
-            get { return isPhoto; }
-            set { isPhoto = value; }
-        }
-
         #endregion
     }
 }
