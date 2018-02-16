@@ -37,6 +37,7 @@ namespace Læringsapplikasjon
         {
             title = t;
             info = i;
+
             photo = p;
             audio = au;
 
