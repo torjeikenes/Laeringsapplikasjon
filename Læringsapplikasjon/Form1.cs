@@ -39,12 +39,26 @@ namespace Læringsapplikasjon
 
         private void Laeringsspill_Load(object sender, EventArgs e)
         {
+            LoadPanel(startPanel);
+
             folderGame.SelectedPath = rootDir;
             LoadFolders(rootDir);
             /*
             quizList.Add(new QuizData("What are frogs?", new string[] { "frog", "test", "ting", "frosk" }, "frog", "frosk.png", "frog.wav"));
             quizList.Add(new QuizData("Hvilket svar er Riktig?", new string[] { "Riktig", "test", "ting", "frosk" }, "Riktig"));
             LoadQuestion(0);*/
+        }
+
+        private void LoadPanel(Panel pa)
+        {
+            foreach (Panel p in this.Controls.OfType<Panel>())
+            {
+                p.Location = new Point(0, 0);
+                p.Visible = false;
+            }
+
+            pa.Visible = true;
+
         }
 
         #region quiz
@@ -79,7 +93,7 @@ namespace Læringsapplikasjon
             else
             {
                 compQuizText.Text = "Du fikk " + Convert.ToString(correctAnswers) + " riktige svar";
-                compQuizP.Dock = DockStyle.Fill;
+                LoadPanel(compQuizP);
             }
         }
 
@@ -178,6 +192,9 @@ namespace Læringsapplikasjon
             }
             Console.WriteLine(listGames.Text);
             LoadQuestion(0);
+
+            LoadPanel(teachPanel);
+
 
         }
 
