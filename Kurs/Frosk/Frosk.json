@@ -1,0 +1,38 @@
+{
+	"teach": [
+		{
+			"title":"Frosk",
+			"info":"Dette er et bilde av en frosk",
+			"photo":"frosk.png",
+			"audio":""
+		},
+		{
+			"title":"Frosk lyd",
+			"info":"Trykk på knappen for å høre lyden frosken lager",
+			"photo":"",
+			"audio":"frog.wav"
+		},
+		{
+			"title":"Fun Fact",
+			"info":"Frosken drikker gjennom huden",
+			"photo":"",
+			"audio":""
+		}
+	],
+	"quiz":[
+		{
+			"question":"Hvilket dyr er dette?",
+			"answer":["Ape", "frosk", "laks", "hund"],
+			"correct":"frosk",
+			"photo":"frosk.png",
+			"audio":""
+		},
+		{
+			"question":"Hvilket dyr lager denne lyden?",
+			"answer":["frosk", "laks", "ape", "hund"],
+			"correct":"maksimus",
+			"photo":"",
+			"audio":"frog.wav"
+		}
+	]
+}
