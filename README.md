@@ -61,4 +61,4 @@ Spørsmåldelen er litt anderledes:
 			"audio":""
 		}
 ```
-Svaralternativene står i listen `answer` og det riktige svaret står i `correct`. Det riktige svaralternativet og listen må være like.
+Svaralternativene står i listen `answer` og det riktige svaret står i `correct`. Det riktige svaralternativet i `correct` og det riktige alternativet i listen `answer` må være helt like, case-sensitive.
