@@ -24,29 +24,6 @@ namespace Læringsapplikasjon
             photo = p;
             audio = au;
         }
-
-        public QuizData(string q, string[] a, string c,string p)
-        {
-            question = q;
-            answers = a;
-            correct = c;
-            photo = p;
-        }
-
-        public QuizData(string q, string[] a, string c,  string au, bool isPict)
-        {
-            question = q;
-            answers = a;
-            correct = c;
-            audio = au;
-        }
-
-        public QuizData(string q, string[] a, string c)
-        {
-            question = q;
-            answers = a;
-            correct = c;
-        }
         #endregion
 
         #region set_get_metoder
@@ -73,8 +50,6 @@ namespace Læringsapplikasjon
             get { return audio; }
             set { audio = value; }
         }
-
-
         #endregion
 
         public bool CheckAnswer(string answer)

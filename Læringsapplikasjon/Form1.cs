@@ -100,10 +100,9 @@ namespace Læringsapplikasjon
 
         private string getAnswer()
         {
-            /*
             string ans = "";
             Console.WriteLine(Controls.OfType<RadioButton>());
-            foreach (RadioButton b in Controls.OfType<RadioButton>())
+            foreach (RadioButton b in quizPanel.Controls.OfType<RadioButton>())
             {
                 Console.WriteLine("heihei");
                 if (b.Checked)
@@ -112,13 +111,6 @@ namespace Læringsapplikasjon
                 }
             }
             return ans;
-            */
-
-            RadioButton correct = quizPanel.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
-            if (correct != null)
-                return correct.Text;
-            else
-                return "";
         }
 
         private void nextBt_Click(object sender, EventArgs e)
